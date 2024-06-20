@@ -1,0 +1,28 @@
+CREATE TABLE Company (
+    company_id INT AUTO_INCREMENT PRIMARY KEY,
+    company_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Action (
+    action_id INT AUTO_INCREMENT PRIMARY KEY,
+    company_id INT,
+    action_name VARCHAR(255) NOT NULL,
+    api_url VARCHAR(150),
+    FOREIGN KEY (company_id) REFERENCES Company(company_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE FollowupQuestion (
+    question_id INT AUTO_INCREMENT PRIMARY KEY,
+    action_id INT,
+    question_text VARCHAR(255) NOT NULL,
+    question_type VARCHAR(50) NOT NULL,
+    sequence_order INT NOT NULL,
+    FOREIGN KEY (action_id) REFERENCES Action(action_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Option (
+    option_id INT AUTO_INCREMENT PRIMARY KEY,
+    question_id INT,
+    option_text VARCHAR(255) NOT NULL,
+    FOREIGN KEY (question_id) REFERENCES FollowupQuestion(question_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
