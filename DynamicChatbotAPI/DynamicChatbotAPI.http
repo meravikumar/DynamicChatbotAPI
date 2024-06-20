@@ -1,0 +1,6 @@
+@DynamicChatbotAPI_HostAddress = http://localhost:5196
+
+GET {{DynamicChatbotAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
