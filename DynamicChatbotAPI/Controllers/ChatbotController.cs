@@ -1,5 +1,4 @@
 ﻿using DynamicChatbotAPI.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -40,6 +39,7 @@ namespace DynamicChatbotAPI.Controllers
                     followups = a.FollowupQuestions.Select(f => new
                     {
                         question = f.QuestionText,
+                        entity = f.Entity,
                         type = f.QuestionType,
                         options = f.Options.Select(o => o.OptionText).ToList()
                     }).ToList()

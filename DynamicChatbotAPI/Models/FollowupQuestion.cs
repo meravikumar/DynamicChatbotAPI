@@ -15,6 +15,8 @@ public partial class FollowupQuestion
 
     public int SequenceOrder { get; set; }
 
+    public string? Entity { get; set; }
+
     public virtual Action? Action { get; set; }
 
     public virtual ICollection<Option> Options { get; set; } = new List<Option>();
